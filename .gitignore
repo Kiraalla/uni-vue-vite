@@ -19,4 +19,7 @@ dist
 *.njsproj
 *.sln
 *.sw?
-pnpm-lock.yaml
+.vscode
+
+# IDE-specific files
+*.yaml
