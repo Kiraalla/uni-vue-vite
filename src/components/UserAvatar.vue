@@ -4,14 +4,14 @@ import { computed, ref, onMounted, onUnmounted } from "vue";
 const props = defineProps({
   name: {
     type: String,
-    default: "John Doe",
+    default: "新用户",
   },
   avatar: {
     type: String,
   },
   alt: {
     type: String,
-    default: "User Avatar",
+    default: "用户头像",
   },
   size: {
     type: [Number, String],
@@ -19,7 +19,7 @@ const props = defineProps({
   },
   radius: {
     type: String,
-    default: "50%",
+    default: "0",
   },
   block: {
     type: Boolean,
@@ -43,7 +43,20 @@ const initialLetter = computed(() => {
   return firstLetter ? firstLetter.toUpperCase() : "";
 });
 
-// 处理 size 的单位
+// 处理 sizeImage 的大小
+const sizeImage = computed(() => {
+  if (typeof props.size === "number") {
+    return props.size;
+  } else {
+    const match = props.size.match(/^(\d+)(\D+)$/);
+    if (match) {
+      return parseFloat(match[1]);
+    }
+    return parseFloat(props.size);
+  }
+});
+
+// 处理 sizeWithUnit 的单位
 const sizeWithUnit = computed(() => {
   if (typeof props.size === "number") {
     return `${props.size}px`;
@@ -143,12 +156,13 @@ onUnmounted(() => {
   <image
     v-if="!letter"
     class="user-avatar"
-    :src="avatar || `https://dummyimage.com/${size}x${size}`"
+    :src="avatar || `https://dummyimage.com/${sizeImage}x${sizeImage}`"
     :alt="alt"
     :title="name"
+    :style="{ backgroundColor: 'transparent' }"
   ></image>
-  <view v-else class="user-avatar">
-    {{ initialLetter }}
+  <view v-else class="user-avatar" :style="{ backgroundColor: cachedColor }">
+    <text class="user-avatar-letter">{{ initialLetter }}</text>
   </view>
 </template>
 <style scoped>
@@ -158,12 +172,13 @@ onUnmounted(() => {
   border-radius: v-bind("radius");
   display: v-bind("inlineBlock");
   object-fit: v-bind("mode || 'cover'");
-  background-color: v-bind("cachedColor || '#ccc'");
-  font-size: v-bind("fontSizeWithUnit");
-  line-height: v-bind("sizeWithUnit");
-  font-family: system-ui, sans-serif;
-  color: #fff;
   text-align: center;
   overflow: hidden;
+  .user-avatar-letter {
+    font-size: v-bind("fontSizeWithUnit");
+    line-height: v-bind("sizeWithUnit");
+    font-family: system-ui, sans-serif;
+    color: #fff;
+  }
 }
 </style>

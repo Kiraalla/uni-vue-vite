@@ -4,8 +4,9 @@
     <view class="text-area">
       <text class="title">{{ title }}</text>
     </view>
-    <UserAvatar size="100rpx" name="王留美" letter />
+    <UserAvatar size="200rpx" name="王留美" />
     <UserAvatar radius="20rpx" name="张三" letter />
+    <UserAvatar size="100rpx" radius="50%" name="煌大和" letter />
   </view>
 </template>
 <script setup>
