@@ -19,24 +19,27 @@ const title = "Welcome to uni-vue-vite";
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
+  .logo {
+    height: 200rpx;
+    width: 200rpx;
+    margin: 1em auto;
+  }
 
-.logo {
-  height: 200rpx;
-  width: 200rpx;
-  margin-top: 200rpx;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 50rpx;
-}
+  .text-area {
+    display: flex;
+    justify-content: center;
+    margin: 1em auto;
+  }
 
-.text-area {
-  display: flex;
-  justify-content: center;
-}
+  .title {
+    font-size: 36rpx;
+    color: #8f8f94;
+    text-align: center;
+  }
 
-.title {
-  font-size: 36rpx;
-  color: #8f8f94;
+  .user-avatar {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
 }
 </style>

@@ -106,24 +106,16 @@ const setStorage = (key, value) => {
 // 删除 storage 中的颜色
 const removeStorage = (key) => {
   // #ifdef MP-WEIXIN
-  try {
-    wx.removeStorageSync(key);
-  } catch (e) {
-    console.error("未能删除微信小程序中存储的UserAvatar背景色:", e);
-  }
+  wx.removeStorageSync(key);
   // #endif
   // #ifdef H5
-  try {
-    localStorage.removeItem(key);
-  } catch (e) {
-    console.error("未能删除H5中存储的UserAvatar背景色:", e);
-  }
+  localStorage.removeItem(key);
   // #endif
 };
 
 // 从缓存中读取颜色值或生成新颜色
 const getCachedColor = () => {
-  const cacheKey = `user-avatar-color-${props.name}`; // 使用 name 作为缓存键
+  const cacheKey = `UserAvatar-${props.name}`; // 使用 name 作为缓存键
   const cached = getStorage(cacheKey);
   if (cached) {
     return cached;
