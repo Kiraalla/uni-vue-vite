@@ -1,16 +1,14 @@
 <template>
   <view class="content">
-    <image class="logo" src="/static/logo.png"></image>
-    <view class="text-area">
-      <text class="title">{{ title }}</text>
-    </view>
-    <UserAvatar size="200rpx" name="王留美" />
-    <UserAvatar radius="20rpx" name="张三" letter />
+    <UserAvatar size="200rpx" name="李四" />
+    <UserAvatar radius="20rpx" name="王留美" url="/static/images/avatar.jpg"  />
     <UserAvatar size="100rpx" radius="50%" name="煌大和" letter />
+    <CallService /> 
   </view>
 </template>
 <script setup>
 import UserAvatar from "@/components/UserAvatar";
+import CallService from "@/components/CallService";
 const title = "Welcome to uni-vue-vite";
 </script>
 
@@ -20,23 +18,6 @@ const title = "Welcome to uni-vue-vite";
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  .logo {
-    height: 200rpx;
-    width: 200rpx;
-    margin: 1em auto;
-  }
-
-  .text-area {
-    display: flex;
-    justify-content: center;
-    margin: 1em auto;
-  }
-
-  .title {
-    font-size: 36rpx;
-    color: #8f8f94;
-    text-align: center;
-  }
 
   .user-avatar {
     margin-top: 0.5em;

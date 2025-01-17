@@ -6,7 +6,7 @@ const props = defineProps({
     type: String,
     default: "新用户",
   },
-  avatar: {
+  url: {
     type: String,
   },
   alt: {
@@ -36,7 +36,7 @@ const props = defineProps({
 });
 
 // 处理 block
-const inlineBlock = computed(() => (props.block ? "inline-block" : "block"));
+const inlineBlock = computed(() => (props.block ? "block" : "inline-block"));
 const initialLetter = computed(() => {
   const name = props.name || "";
   const firstLetter = name.charAt(0);
@@ -156,7 +156,7 @@ onUnmounted(() => {
   <image
     v-if="!letter"
     class="user-avatar"
-    :src="avatar || `https://dummyimage.com/${sizeImage}x${sizeImage}`"
+    :src="url || `https://dummyimage.com/${sizeImage}x${sizeImage}`"
     :alt="alt"
     :title="name"
     :style="{ backgroundColor: 'transparent' }"
