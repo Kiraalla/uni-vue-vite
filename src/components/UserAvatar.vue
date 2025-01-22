@@ -165,7 +165,7 @@ onUnmounted(() => {
     <text class="user-avatar-letter">{{ initialLetter }}</text>
   </view>
 </template>
-<style scoped>
+<style lang="scss" scoped>
 .user-avatar {
   width: v-bind("sizeWithUnit");
   height: v-bind("sizeWithUnit");

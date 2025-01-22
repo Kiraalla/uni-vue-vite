@@ -1,4 +1,10 @@
 {
+  "easycom": {
+    "autoscan": true,
+    "custom": {
+      "^z-(.*)": "zebra-swiper/components/z-$1/z-$1.vue"
+    }
+  },
   "pages": [
     {
       "path": "pages/index/index",
