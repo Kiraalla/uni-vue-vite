@@ -1,7 +1,7 @@
 <template>
     <view class="wy-flex-col wy-col-center">
       <view class="kefu-ewm">
-        <image class="kefu-ewm-img" src="/static/images/ewm.jpg"></image>
+        <image class="kefu-ewm-img" src="/static/images/ewm.jpg" loading="lazy"></image>
       </view>
       <view
         class="wy-my-10 wy-p-12 wy-flex wy-row-center"
@@ -9,7 +9,7 @@
         <image :src="ewm" class="kefu-avatar"></image>
         <text class="kefu-name">{{ name }}</text>
       </view>
-      <view class="wy-flex wy-row-center">
+      <view class="wy-flex wy-row-center wy-my-10">
         <text class="text-primary wy-font-14">{{ label}}</text>
         <image :src="bottomIcon" class="kefu-click"></image>
       </view>

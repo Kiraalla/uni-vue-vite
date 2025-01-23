@@ -4,7 +4,7 @@
     <UserAvatar radius="20rpx" name="王留美" url="/static/images/avatar.jpg" />
     <UserAvatar size="100rpx" radius="50%" name="煌大和" letter />
     <CallService />
-    <z-swiper  :custom-style="{width: '100%'}">
+    <z-swiper :custom-style="{ width: '100%' }">
       <z-swiper-item v-for="item in list" :key="item.id">
         <view class="swiper-item">{{ item.text }}</view>
       </z-swiper-item>
@@ -15,6 +15,8 @@
 import { ref } from "vue";
 import UserAvatar from "@/components/UserAvatar";
 import CallService from "@/components/CallService";
+
+// 其他逻辑
 const list = ref(
   Array.from({
     length: 5,
