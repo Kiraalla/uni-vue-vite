@@ -49,6 +49,7 @@
     "@dcloudio/uni-mp-weixin": "3.0.0-4040520250104002",
     "@dcloudio/uni-mp-xhs": "3.0.0-4040520250104002",
     "@dcloudio/uni-quickapp-webview": "3.0.0-4040520250104002",
+    "@vueuse/core": "^12.5.0",
     "@zebra-ui/swiper": "^3.0.2",
     "sass": "^1.83.4",
     "vue": "^3.5.13",

@@ -1,5 +1,6 @@
 <template>
   <view class="content">
+    <div>pos: {{ x }}, {{ y }}</div>
     <UserAvatar size="200rpx" name="李四" />
     <UserAvatar radius="20rpx" name="王留美" url="/static/images/avatar.jpg" />
     <UserAvatar size="100rpx" radius="50%" name="煌大和" letter />
@@ -15,7 +16,9 @@
 import { ref } from "vue";
 import UserAvatar from "@/components/UserAvatar";
 import CallService from "@/components/CallService";
-
+import { useMouse } from "@vueuse/core";
+// 測試vueuse的useMouse函數
+const { x, y } = useMouse();
 // 其他逻辑
 const list = ref(
   Array.from({

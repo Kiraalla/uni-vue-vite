@@ -6,4 +6,10 @@ export default defineConfig({
   plugins: [
     uni(),
   ],
+  resolve: {
+    alias: {
+      // 解決pnpm 依赖问题
+      '@vueuse/shared': require.resolve('@vueuse/shared'),
+    },
+  },
 })
