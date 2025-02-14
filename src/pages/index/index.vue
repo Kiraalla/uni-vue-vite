@@ -1,6 +1,6 @@
 <template>
   <view class="content">
-    <div>pos: {{ x }}, {{ y }}</div>
+    <view>pos: {{ x }}, {{ y }}</view>
     <UserAvatar size="200rpx" name="李四" />
     <UserAvatar radius="20rpx" name="王留美" url="/static/images/avatar.jpg" />
     <UserAvatar size="100rpx" radius="50%" name="煌大和" letter />
@@ -10,6 +10,7 @@
         <view class="swiper-item">{{ item.text }}</view>
       </z-swiper-item>
     </z-swiper>
+    <button @click="goDemo">组件测试</button>
   </view>
 </template>
 <script setup>
@@ -30,6 +31,11 @@ const list = ref(
     };
   })
 );
+const goDemo = () => {
+  uni.navigateTo({
+    url: "@/pages/demo/index",
+  });
+};
 </script>
 
 <style>
