@@ -61,12 +61,12 @@ export default {
   overflow: hidden;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   display: flex;
-  flex-direction: column;
 }
 
 .product-image {
-  width: 100%;
-  height: auto;
+  width: 200px;
+  height: 200px;
+  flex:none;
 }
 
 .product-info {

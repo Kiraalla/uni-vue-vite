@@ -33,7 +33,7 @@ const list = ref(
 );
 const goDemo = () => {
   uni.navigateTo({
-    url: "@/pages/demo/index",
+    url: "/pages/demo/index",
   });
 };
 </script>
