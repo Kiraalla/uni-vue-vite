@@ -12,4 +12,14 @@ export default defineConfig({
       '@vueuse/shared': require.resolve('@vueuse/shared'),
     },
   },
+  build: {
+    rollupOptions: {
+      output: {
+        // 使用固定的文件名（不包含哈希）
+        entryFileNames: 'js/[name].js',
+        chunkFileNames: 'js/[name].js',
+        assetFileNames: 'assets/[name].[ext]'
+      }
+    }
+  }
 })
