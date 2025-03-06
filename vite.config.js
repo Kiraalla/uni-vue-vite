@@ -13,6 +13,7 @@ export default defineConfig({
     },
   },
   build: {
+    minify: false, // 禁用代码压缩
     rollupOptions: {
       output: {
         // 使用固定的文件名（不包含哈希）
