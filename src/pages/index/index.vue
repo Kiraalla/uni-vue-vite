@@ -1,6 +1,5 @@
 <template>
   <view class="content">
-    <view>pos: {{ x }}, {{ y }}</view>
     <UserAvatar size="200rpx" name="李四" />
     <UserAvatar radius="20rpx" name="王留美" url="/static/images/avatar.jpg" />
     <UserAvatar size="100rpx" radius="50%" name="煌大和" letter />
@@ -14,12 +13,9 @@
   </view>
 </template>
 <script setup>
-import { ref } from "vue";
-import UserAvatar from "@/components/UserAvatar";
 import CallService from "@/components/CallService";
-import { useMouse } from "@vueuse/core";
-// 測試vueuse的useMouse函數
-const { x, y } = useMouse();
+import UserAvatar from "@/components/UserAvatar";
+import { ref } from "vue";
 // 其他逻辑
 const list = ref(
   Array.from({
@@ -37,8 +33,8 @@ const goDemo = () => {
   });
 };
 </script>
-
-<style>
+<style lang="scss" :scoped="false">
+@use "@/uni_modules/zebra-swiper/index.scss";
 .content {
   display: flex;
   flex-direction: column;
@@ -60,6 +56,7 @@ const goDemo = () => {
   user-select: none;
   background-color: #000;
 }
+
 .swiper-item {
   color: #fff;
 }

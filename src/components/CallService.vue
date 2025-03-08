@@ -4,12 +4,12 @@
         <image class="kefu-ewm-img" src="/static/images/ewm.jpg" loading="lazy"></image>
       </view>
       <view
-        class="wy-my-10 wy-p-12 wy-flex wy-row-center"
+        class="wy-my-10 wy-p-12 wy-flex jc-center"
         style="background-color: #f5f5f5; width: 200px">
         <image :src="ewm" class="kefu-avatar"></image>
-        <text class="kefu-name">{{ name }}</text>
+        <text class="kefu-name as-center">{{ name }}</text>
       </view>
-      <view class="wy-flex wy-row-center wy-my-10">
+      <view class="wy-flex jc-center wy-my-10">
         <text class="text-primary wy-font-14">{{ label}}</text>
         <image :src="bottomIcon" class="kefu-click"></image>
       </view>

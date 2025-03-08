@@ -1,0 +1,29 @@
+@use "sass:math";
+@use "sass:map";
+
+$breakpoints: (
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
+);
+
+@mixin respond-above($breakpoint) {
+  @if map.has-key($breakpoints, $breakpoint) {
+    @media (min-width: map.get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  }
+}
+
+// 生成响应式栅格
+@each $bp, $width in $breakpoints {
+  @include respond-above($bp) {
+    @for $i from 1 through 12 {
+      .col-#{$bp}-#{$i} {
+        flex: 0 0 math.percentage(math.div($i, 12));
+        max-width: math.percentage(math.div($i, 12));
+      }
+    }
+  }
+}

@@ -1,0 +1,46 @@
+// 基础标签格式化
+page {
+  min-height: 100vh;
+  background-color: #f8f8f8;
+  font-size: 28rpx;
+  line-height: 1.5;
+  color: #333;
+  box-sizing: border-box;
+}
+
+view {
+  box-sizing: border-box;
+  position: relative;
+}
+
+text {
+  display: inline-block;
+  box-sizing: border-box;
+}
+
+image {
+  width: 100%;
+  height: auto;
+  display: block;
+  box-sizing: border-box;
+}
+
+button {
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+  background: none;
+  box-sizing: border-box;
+  &::after {
+    border: none;
+  }
+}
+
+input {
+  outline: none;
+  border: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}

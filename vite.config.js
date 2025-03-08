@@ -6,12 +6,6 @@ export default defineConfig({
   plugins: [
     uni(),
   ],
-  resolve: {
-    alias: {
-      // 解決pnpm 依赖问题
-      '@vueuse/shared': require.resolve('@vueuse/shared'),
-    },
-  },
   build: {
     minify: false, // 禁用代码压缩
     rollupOptions: {

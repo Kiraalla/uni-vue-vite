@@ -1,8 +1,10 @@
 <script>
 export default {
   onLaunch: function () {
+    // #ifdef H5
     this.setViewportMeta();
     this.removeScrollEvent();
+    // #endif
   },
   onShow: function () {
     // console.log('App Show')
@@ -11,9 +13,11 @@ export default {
     // console.log('App Hide')
   },
   methods: {
+    // #ifdef H5
     setViewportMeta() {
       const coverSupport =
         "CSS" in window &&
+        typeof CSS !== 'undefined' &&
         typeof CSS.supports === "function" &&
         (CSS.supports("top: env(a)") || CSS.supports("top: constant(a)"));
 
@@ -42,11 +46,11 @@ export default {
         };
       }
     },
+    // #endif
   },
 };
 </script>
 
 <style lang="scss">
-@use "@/uni_modules/zebra-swiper/index.scss";
-@use "@/static/base.scss";
+@use "@/styles/main.scss";
 </style>
