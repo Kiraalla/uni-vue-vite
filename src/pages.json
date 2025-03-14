@@ -17,6 +17,12 @@
       "style": {
         "navigationBarTitleText": "组件测试"
       }
+    },
+    {
+      "path": "pages/demo/http-test",
+      "style": {
+        "navigationBarTitleText": "HTTP工具测试"
+      }
     }
   ],
   "globalStyle": {
