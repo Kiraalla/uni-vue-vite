@@ -1,16 +1,16 @@
 <template>
-    <view class="wy-flex-col wy-col-center">
+    <view class="flex-col ai-center">
       <view class="kefu-ewm">
         <image class="kefu-ewm-img" src="/static/images/ewm.jpg" loading="lazy"></image>
       </view>
       <view
-        class="wy-my-10 wy-p-12 wy-flex jc-center"
+        class="my-10 p-12 flex jc-center"
         style="background-color: #f5f5f5; width: 200px">
         <image :src="ewm" class="kefu-avatar"></image>
         <text class="kefu-name as-center">{{ name }}</text>
       </view>
-      <view class="wy-flex jc-center wy-my-10">
-        <text class="text-primary wy-font-14">{{ label}}</text>
+      <view class="flex jc-center my-10">
+        <text class="text-primary font-14">{{ label}}</text>
         <image :src="bottomIcon" class="kefu-click"></image>
       </view>
     </view>

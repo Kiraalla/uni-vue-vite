@@ -4,10 +4,23 @@
 @forward './_variables';
 @use './_variables' as *;
 
-// ================== 基础混入 ==================
+// ================== 基础配置 ==================
+$unit-value: 2; // 单位倍率
+$unit-base: rpx !default; // 基础单位类型
+$spacing-base: 2 !default; // 基础间距数值
+
+// ================== 工具函数 ==================
 // 通用工具类生成器
 @function get-short($key) {
-  @return if(meta.type-of($key) == 'string', string.slice($key, 1, 3), '');
+  @return if(meta.type-of($key)=='string', string.slice($key, 1, 4), '');
+}
+
+@function get-size($value) {
+  @return if($value ==0, 0, $value * $unit-value + $unit-base);
+}
+
+@function get-percent($value) {
+  @return if($value ==0, 0, #{$value + '%'});
 }
 
 @mixin generate-utility($property, $values, $prefix: '') {
@@ -18,6 +31,7 @@
   }
 }
 
+// ================== 通用混合器 ==================
 // 多行文本截断
 @mixin text-truncate-lines($lines: 2) {
   display: -webkit-box;
@@ -58,6 +72,7 @@
 // 交互效果
 @mixin hover-lift($distance: -3px) {
   transition: transform 0.2s ease;
+
   &:hover {
     transform: translateY($distance);
   }
@@ -65,6 +80,7 @@
 
 @mixin hover-scale($scale: 1.05) {
   transition: transform 0.2s ease;
+
   &:hover {
     transform: scale($scale);
   }
@@ -77,37 +93,38 @@
   }
 }
 
-// ================== 核心工具类 ==================
-// 颜色系统
-@include generate-utility('color', $mapColor, 'text-');
-@include generate-utility('background-color', $mapColor, 'bg-');
-
-// 布局系统
-.wy-flex {
-  display: flex;
-  &-col { flex-direction: column; }
-  &-wrap { flex-wrap: wrap; }
-  &-nowrap { flex-wrap: nowrap; }
+// 可见性
+.hidden {
+  display: none;
 }
 
-.wy-grid { display: grid; }
+.visible {
+  overflow: visible;
+}
 
-// Grid 列数系统
-$grid-columns: (
-  1: 1fr,
-  2: repeat(2, 1fr),
-  3: repeat(3, 1fr),
-  4: repeat(4, 1fr),
-  5: repeat(5, 1fr),
-  6: repeat(6, 1fr),
-  7: repeat(7, 1fr),
-  8: repeat(8, 1fr),
-  9: repeat(9, 1fr),
-  10: repeat(10, 1fr),
-  11: repeat(11, 1fr),
-  12: repeat(12, 1fr)
-);
-@include generate-utility('grid-template-columns', $grid-columns, 'grid-cols-');
+// ================== 布局系统 ==================
+// Flexbox布局
+.flex {
+  display: flex;
+
+  &-col {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &-wrap {
+    flex-wrap: wrap;
+  }
+
+  &-nowrap {
+    flex-wrap: nowrap;
+  }
+}
+
+// Grid布局
+.grid {
+  display: grid;
+}
 
 // Flexbox & Grid 对齐系统
 $alignment-values: (
@@ -117,10 +134,8 @@ $alignment-values: (
   stretch: stretch
 );
 
-$justify-values: map.merge($alignment-values, (
-  between: space-between,
-  around: space-around
-));
+$justify-values: map.merge($alignment-values, (between: space-between,
+      around: space-around));
 
 @include generate-utility('align-items', $alignment-values, 'ai-');
 @include generate-utility('align-self', $alignment-values, 'as-');
@@ -131,10 +146,13 @@ $justify-values: map.merge($alignment-values, (
 // 定位系统
 .pos {
   @each $pos in relative, absolute, fixed, sticky {
+
     &-#{get-short($pos)},
-    &-#{$pos} { position: $pos; }
+    &-#{$pos} {
+      position: $pos;
+    }
   }
-  
+
   &-center {
     position: absolute;
     top: 50%;
@@ -142,42 +160,103 @@ $justify-values: map.merge($alignment-values, (
     transform: translate(-50%, -50%);
   }
 }
-
 // z-index 系统
 @for $i from -5 through 5 {
-// 如果$i小于0，$i = 'n'+|$i|
-// 如果$i大于0，$i = $i * $spacing-base
   $num: if($i < 0, 'n' + abs($i * $spacing-base), $i * $spacing-base);
-  .z-#{$num} { z-index: #{$i * $spacing-base}; }
-}
-// 图片系统
-.img {
-  &-fluid {
-    max-width: 100%;
-    height: auto;
-    display: block;
+
+  .z-#{$num} {
+    z-index: #{$i * $spacing-base};
   }
-  
-  @each $fit in cover, contain {
-    &-#{$fit} { object-fit: $fit; }
-  }
-  
-  &-gray { filter: grayscale(100%); }
 }
 
-// 文字系统
+@for $i from 1 through 10 {
+  $num: if($i < 0, 'n' + abs($i * $spacing-base), $i * $spacing-base);
+  $num: $i * 100;
+
+  .z-#{$num} {
+    z-index: #{$i * $spacing-base};
+  }
+}
+// ================== 视觉效果 ==================
+// 颜色系统
+$mapColor: (
+  primary: var(--primary),
+  accent: var(--accent),
+  link: var(--link),
+  success: var(--success),
+  warning: var(--warning),
+  danger: var(--danger),
+  background: var(--background),
+  dividers: var(--dividers),
+  mask: var(--mask),
+  title: var(--title),
+  subtitle: var(--subtitle),
+  disabled: var(--disabled),
+  border: var(--border),
+  light: $light,
+  dark: $dark,
+  white: $white,
+  black: $black,
+  333: $hex-333,
+  666: $hex-666,
+  999: $hex-999,
+  eee: $hex-eee,
+  ddd: $hex-ddd,
+  f0: $f0,
+  f5: $f5,
+  f7: $f7,
+  black-20: $black-20,
+  black-40: $black-40,
+  black-60: $black-60,
+  black-80: $black-80,
+  white-20: $white-20,
+  white-40: $white-40,
+  white-60: $white-60,
+  white-80: $white-80,
+);
+
 .text {
-  &-center { text-align: center; }
-  &-left { text-align: left; }
-  &-right { text-align: right; }
+  &-center {
+    text-align: center;
+  }
+
+  &-left {
+    text-align: left;
+  }
+
+  &-right {
+    text-align: right;
+  }
+
   &-ellipsis {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
   }
 }
+@include generate-utility('color', $mapColor, 'text-');
+@include generate-utility('background-color', $mapColor, 'bg-');
 
-// 视觉效果
+// 图片样式
+.img {
+  &-fluid {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  @each $fit in cover, contain {
+    &-#{$fit} {
+      object-fit: $fit;
+    }
+  }
+
+  &-gray {
+    filter: grayscale(100%);
+  }
+}
+
+// 阴影效果
 $shadows: (
   'sm': '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
   'default': '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
@@ -185,72 +264,13 @@ $shadows: (
 );
 
 @each $key, $value in $shadows {
-  $class-name: if($key == 'default', '', '-#{$key}');
-  .shadow#{$class-name} { box-shadow: #{$value}; }
-}
+  $class-name: if($key =='default', '', '-#{$key}');
 
-// 透明度系统
-@for $i from 0 through 4 {
-  .opacity-#{$i * 25} { opacity: #{$i * 0.25}; }
-}
-
-// 可见性
-.hidden { display: none; }
-.visible { overflow: visible; }
-
-// 尺寸函数
-@function get-size($value) {
-  @return if($value == 0, 0, $value * $unit-value + $unit-base);
-}
-
-// 间距系统
-@for $i from -10 to 0 {
-  $i : $i * $spacing-base;
-  $num : abs($i);
-  // Directions
-  @each $dir, $prop in (t: top, r: right, b: bottom, l: left) {
-    .wy-m#{$dir}-#{'n'+$num} { margin-#{$prop}: get-size($i); }
-  }
-}
-@for $i from 0 through 30 {
-  $i : if($i == 0, 0, $i * $spacing-base);
-  // Margin
-  .wy-m-#{$i} { margin: get-size($i); }
-  // Axis
-  .wy-mx-#{$i} { margin-left: get-size($i); margin-right: get-size($i); }
-  .wy-my-#{$i} { margin-top: get-size($i); margin-bottom: get-size($i); }
-  // Directions
-  @each $dir, $prop in (t: top, r: right, b: bottom, l: left) {
-    .wy-m#{$dir}-#{$i} { margin-#{$prop}: get-size($i); }
-  }
-  
-  // Padding
-  .wy-p-#{$i} { padding: get-size($i); }
-  // Axis
-  .wy-px-#{$i} { padding-left: get-size($i); padding-right: get-size($i); }
-  .wy-py-#{$i} { padding-top: get-size($i); padding-bottom: get-size($i); }
-  // Directions
-  @each $dir, $prop in (t: top, r: right, b: bottom, l: left) {
-    .wy-p#{$dir}-#{$i} { padding-#{$prop}: get-size($i); }
+  .shadow#{$class-name} {
+    box-shadow: #{$value};
   }
 }
 
-// 尺寸工具类
-@for $i from 1 through 30 {
-  $value: $i * $spacing-base;
-  .w-#{$i} { width: get-size($value); }
-  .h-#{$i} { height: get-size($value); }
-}
-
-// 字体大小系统
-@for $i from 12 through 48 {
-  .font-#{$i} { font-size: #{$i * $unit-value}#{$unit-base}; }
-}
-
-// Gap 系统
-@for $i from 0 through 10 {
-  .gap-#{$i} { gap: if($i == 0, 0, #{$i * $spacing-base * $unit-value}#{$unit-base}); }
-}
 // 圆角系统
 $border-radius: (
   'sm': 2,
@@ -260,8 +280,116 @@ $border-radius: (
 );
 
 @each $key, $value in $border-radius {
-  $class-name: if($key == 'default', '', '-#{$key}');
-  .rounded#{$class-name} { 
-    border-radius: #{$value * $unit-value}#{$unit-base};
+  $class-name: if($key =='default', '', '-#{$key}');
+
+  .rounded#{$class-name} {
+    border-radius: #{get-size($value)};
+  }
+}
+
+// 透明度系统
+@for $i from 0 through 4 {
+  .opacity-#{$i * 25} {
+    opacity: #{$i * 0.25};
+  }
+}
+
+// ================== 尺寸和间距系统 ==================
+// 字体大小系统
+@for $i from 6 through 24 {
+  $value: $i * 2;
+
+  .font-#{$value} {
+    font-size: #{$value * $unit-value}#{$unit-base};
+  }
+}
+
+// 间距系统
+@for $i from -10 to 0 {
+  $i: $i * $spacing-base;
+  $num: abs($i);
+
+  @each $dir, $prop in (t: top, r: right, b: bottom, l: left) {
+    .m#{$dir}-#{'n'+$num} {
+      margin-#{$prop}: get-size($i);
+    }
+  }
+}
+
+@for $i from 0 through 24 {
+  $i: if($i ==0, 0, $i * $spacing-base);
+
+  // Margin
+  .m-#{$i} {
+    margin: get-size($i);
+  }
+
+  .mx-#{$i} {
+    margin-left: get-size($i);
+    margin-right: get-size($i);
+  }
+
+  .my-#{$i} {
+    margin-top: get-size($i);
+    margin-bottom: get-size($i);
+  }
+
+  @each $dir, $prop in (t: top, r: right, b: bottom, l: left) {
+    .m#{$dir}-#{$i} {
+      margin-#{$prop}: get-size($i);
+    }
+  }
+
+  // Padding
+  .p-#{$i} {
+    padding: get-size($i);
+  }
+
+  .px-#{$i} {
+    padding-left: get-size($i);
+    padding-right: get-size($i);
+  }
+
+  .py-#{$i} {
+    padding-top: get-size($i);
+    padding-bottom: get-size($i);
+  }
+
+  @each $dir, $prop in (t: top, r: right, b: bottom, l: left) {
+    .p#{$dir}-#{$i} {
+      padding-#{$prop}: get-size($i);
+    }
+  }
+}
+
+// Gap 系统
+@for $i from 0 through 10 {
+  .gap-#{$i * $spacing-base} {
+    gap: if($i ==0, 0, #{$i * $spacing-base * $unit-value}#{$unit-base});
+  }
+}
+
+// 尺寸工具类
+@for $i from 0 through 20 {
+  $value: $i * 5;
+
+  .w-#{$value} {
+    width: get-percent($value);
+  }
+
+  .h-#{$value} {
+    height: get-percent($value);
+  }
+}
+
+@for $i from 1 through 10 {
+  $value: $i * 10;
+
+  .w-#{$value}px {
+    width: get-size($value);
+  }
+
+  .h-#{$value}px {
+    height: get-size($value);
   }
 }

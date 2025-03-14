@@ -1,71 +1,219 @@
+// ================== 固定颜色 ==================
+$light: #f8f9fa;
+$dark: #212529;
+$white: #FFFFFF;
+$black: #000000;
+$gray-100: #f8f9fa;
+$gray-200: #f5f5f5;
+$gray-300: #f0f0f0;
+$gray-400: #dee2e6;
+$gray-500: #adb5bd;
+$gray-600: #6c757d;
+$gray-700: #495057;
+$gray-800: #343a40;
+$gray-900: #212529;
+$black-20: rgba(0, 0, 0, 0.2);
+$black-40: rgba(0, 0, 0, 0.4);
+$black-60: rgba(0, 0, 0, 0.6);
+$black-80: rgba(0, 0, 0, 0.8);
+$white-20: rgba(255, 255, 255, 0.2);
+$white-40: rgba(255, 255, 255, 0.4);
+$white-60: rgba(255, 255, 255, 0.6);
+$white-80: rgba(255, 255, 255, 0.8);
+$hex-333: #333333;
+$hex-666: #666666;
+$hex-999: #999999;
+$hex-eee: #eeeeee;
+$hex-ddd: #dddddd;
+$hex-ccc: #cccccc;
+$f0: #f0f0f0;
+$f5: #f5f5f5;
+$f7: #f7f7f7;
+
 // ================== 主题变量 ==================
 :root {
-  --primary: #1073f5;
-  --secondary: #da971c;
-  --link: #183faa;
-  --background: #ffffff;
-  --dividers: #dee2e6;
-  --mask: rgba(0, 0, 0, 0.5);
-  --title: #212529;
-  --subtitle: #6c757d;
-  --disabled: #adb5bd;
-  --border: #dee2e6;
-  --success: #28a745;
-  --warning: #ffc107;
-  --danger: #dc3545;
+  // blue
+  --blue-100: #e6f0ff;
+  --blue-200: #b3d1ff;
+  --blue-300: #80b3ff;
+  --blue-400: #4d94ff;
+  --blue-500: #1073f5;
+  --blue-600: #0066ff;
+  --blue-700: #0052cc;
+  --blue-800: #003d99;
+  --blue-900: #002966;
+
+  // green
+  --green-100: #e6f7e6;
+  --green-200: #b3e6b3;
+  --green-300: #80d580;
+  --green-400: #4dc44d;
+  --green-500: #28a745;
+  --green-600: #208637;
+  --green-700: #19662a;
+  --green-800: #13471d;
+  --green-900: #0c2711;
+
+  // purple
+  --purple-100: #f2e6ff;
+  --purple-200: #d9b3ff;
+  --purple-300: #c080ff;
+  --purple-400: #a64dff;
+  --purple-500: #8c1aff;
+  --purple-600: #7000e6;
+  --purple-700: #5900b3;
+  --purple-800: #420080;
+  --purple-900: #2b004d;
+
+  // orange
+  --orange-100: #fff2e6;
+  --orange-200: #ffd9b3;
+  --orange-300: #ffc080;
+  --orange-400: #ffa64d;
+  --orange-500: #ff8c1a;
+  --orange-600: #e67000;
+  --orange-700: #b35900;
+  --orange-800: #804000;
+  --orange-900: #4d2600;
 }
 
-// ================== 颜色系统 ==================
-$mapColor: (
-  primary: var(--primary),
-  secondary: var(--secondary),
-  link: var(--link),
-  success: var(--success),
-  warning: var(--warning),
-  danger: var(--danger),
-  background: var(--background),
-  dividers: var(--dividers),
-  mask: var(--mask),
-  title: var(--title),
-  subtitle: var(--subtitle),
-  disabled: var(--disabled),
-  border: var(--border),
-  light: #f8f9fa,
-  dark: #343a40,
-  white: #FFFFFF,
-  black: #000000,
-  333: #333,
-  666: #666,
-  999: #999,
-  eee: #EEE,
-  ddd: #DDD,
-  f0: #F0F0F0,
-  f5: #F5F5F5,
-  f7: #F7F7F7,
-  black-20: rgba(0, 0, 0, 0.2),
-  black-40: rgba(0, 0, 0, 0.4),
-  black-60: rgba(0, 0, 0, 0.6),
-  black-80: rgba(0, 0, 0, 0.8),
-  white-20: rgba(255, 255, 255, 0.2),
-  white-40: rgba(255, 255, 255, 0.4),
-  white-60: rgba(255, 255, 255, 0.6),
-  white-80: rgba(255, 255, 255, 0.8)
-);
+// 默认主题（蓝色主题 + 橙色辅助色）
+// 推荐搭配：蓝色主题搭配橙色辅助色，体现专业与活力的平衡
+[data-theme="default"] {
+  --primary: var(--blue-500);
+  --primary-light: var(--blue-400);
+  --primary-dark: var(--blue-600);
+  --accent: var(--orange-500);
+  --accent-light: var(--orange-400);
+  --accent-dark: var(--orange-600);
+  --success: var(--green-500);
+  --warning: var(--orange-400);
+  --danger: var(--purple-500);
+  --link: var(--blue-700);
+  
+  // 浅色主题基础样式
+  --background: #{$white};
+  --dividers: #{$gray-400};
+  --mask: #{$black-40};
+  --title: #{$gray-900};
+  --subtitle: #{$gray-600};
+  --disabled: #{$gray-500};
+  --border: #{$gray-400};
+}
 
-// ================== 布局变量 ==================
-$mapSelf: (
-  baseline: baseline,
-  stretch: stretch,
-  start: start,
-  end: end,
-  flex-start: flex-start,
-  flex-end: flex-end,
-  center: center,
-  unset: unset
-);
+// 浅色主题
+[data-theme="light"] {
+  --primary: var(--blue-500);
+  --primary-light: var(--blue-400);
+  --primary-dark: var(--blue-600);
+  --accent: var(--orange-500);
+  --accent-light: var(--orange-400);
+  --accent-dark: var(--orange-600);
+  --success: var(--green-500);
+  --warning: var(--orange-400);
+  --danger: var(--purple-500);
+  --link: var(--blue-700);
+  
+  // 浅色主题基础样式
+  --background: #{$white};
+  --dividers: #{$gray-400};
+  --mask: #{$black-40};
+  --title: #{$gray-900};
+  --subtitle: #{$gray-600};
+  --disabled: #{$gray-500};
+  --border: #{$gray-400};
+}
 
-// ================== 基础配置 ==================
-// 单位配置
-$unit-value: 1;  // 单位倍率
-$unit-base: px !default;  // 基础单位类型
-$spacing-base: 2 !default;  // 基础间距数值
+// 深色主题
+[data-theme="dark"] {
+  // 深色主题基础样式
+  --background: #{$gray-900};
+  --dividers: #{$gray-800};
+  --mask: #{$black-80};
+  --title: #{$white};
+  --subtitle: #{$gray-400};
+  --disabled: #{$gray-700};
+  --border: #{$gray-800};
+}
+
+// 绿色主题
+// 推荐搭配：绿色主题搭配橙色辅助色，展现活力与健康的融合
+[data-theme="green"] {
+  --primary: var(--green-500);
+  --primary-light: var(--green-400);
+  --primary-dark: var(--green-600);
+}
+
+// 紫色主题
+// 推荐搭配：紫色主题搭配橙色辅助色，展现优雅与浪漫氛围
+[data-theme="purple"] {
+  --primary: var(--purple-500);
+  --primary-light: var(--purple-400);
+  --primary-dark: var(--purple-600);
+}
+
+// 红色主题
+// 推荐搭配：红色主题搭配金色辅助色，突出促销氛围和高级感
+[data-theme="red"] {
+  --primary: #ff4d4f;
+  --primary-light: #ff7875;
+  --primary-dark: #f5222d;
+  --accent: #ffd700;
+  --accent-light: #ffe44d;
+  --accent-dark: #d4af37;
+}
+
+// 橙色主题
+// 推荐搭配：橙色主题搭配蓝色辅助色，体现活力与稳重的结合
+[data-theme="orange"] {
+  --primary: #ff6b00;
+  --primary-light: #ff8533;
+  --primary-dark: #cc5500;
+  --accent: #4169e1;
+  --accent-light: #6495ed;
+  --accent-dark: #0000cd;
+}
+
+// 金色主题
+// 推荐搭配：金色主题搭配紫色辅助色，营造奢华高贵的视觉效果
+[data-theme="gold"] {
+  --primary: #daa520;
+  --primary-light: #ffd700;
+  --primary-dark: #b8860b;
+  --accent: #800080;
+  --accent-light: #ba55d3;
+  --accent-dark: #4b0082;
+}
+
+// 粉色主题
+// 推荐搭配：粉色主题搭配紫色辅助色，打造时尚柔美的氛围
+[data-theme="pink"] {
+  --primary: #ff69b4;
+  --primary-light: #ff8dc7;
+  --primary-dark: #ff1493;
+  --accent: #9370db;
+  --accent-light: #ab82ff;
+  --accent-dark: #8a2be2;
+}
+
+// 青色主题
+// 推荐搭配：青色主题搭配深蓝色辅助色，体现科技感与专业性
+[data-theme="cyan"] {
+  --primary: #0dcaf0;
+  --primary-light: #3dd5f3;
+  --primary-dark: #0aa2c0;
+  --accent: var(--blue-700);
+  --accent-light: var(--blue-600);
+  --accent-dark: var(--blue-800);
+}
+
+// 黄色主题
+// 推荐搭配：黄色主题搭配橙色辅助色，营造温暖活泼氛围
+[data-theme="yellow"] {
+  --primary: #ffc107;
+  --primary-light: #ffcd39;
+  --primary-dark: #cc9a06;
+  --accent: var(--orange-500);
+  --accent-light: var(--orange-400);
+  --accent-dark: var(--orange-600);
+}

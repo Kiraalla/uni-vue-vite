@@ -44,3 +44,81 @@ input {
   padding: 0;
   box-sizing: border-box;
 }
+
+// 表单组件重置
+checkbox, radio {
+  margin: 0;
+  .wx-checkbox-input,
+  .wx-radio-input {
+    margin: 0;
+    width: 36rpx;
+    height: 36rpx;
+    &.wx-checkbox-input-checked,
+    &.wx-radio-input-checked {
+      border-color: #07c160;
+      background-color: #07c160;
+    }
+  }
+}
+
+picker {
+  width: 100%;
+}
+
+textarea {
+  width: 100%;
+  outline: none;
+  border: none;
+  resize: none;
+  box-sizing: border-box;
+}
+
+// 列表组件重置
+scroll-view {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+// 媒体组件重置
+video, audio {
+  width: 100%;
+  display: block;
+}
+
+// 容器组件重置
+swiper {
+  width: 100%;
+  height: auto;
+  swiper-item {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+  }
+}
+
+// 通用样式重置
+.navigator-hover {
+  background-color: transparent;
+  opacity: 0.7;
+}
+
+// 去除点击态效果
+.button-hover,
+.view-hover {
+  opacity: 0.9;
+}
+
+// 去除长按选中文本
+page, view, text, scroll-view, swiper, swiper-item {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+// 去除滚动条
+::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+  color: transparent;
+}
