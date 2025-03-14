@@ -4,8 +4,8 @@
         <image class="kefu-ewm-img" src="/static/images/ewm.jpg" loading="lazy"></image>
       </view>
       <view
-        class="my-10 p-12 flex jc-center"
-        style="background-color: #f5f5f5; width: 200px">
+        class="my-10 p-12 flex jc-center bg-f5"
+        style="width: 200px">
         <image :src="ewm" class="kefu-avatar"></image>
         <text class="kefu-name as-center">{{ name }}</text>
       </view>
