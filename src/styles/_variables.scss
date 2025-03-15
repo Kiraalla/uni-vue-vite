@@ -23,73 +23,126 @@ $white-80: rgba(255, 255, 255, 0.8);
 $hex-333: #333333;
 $hex-666: #666666;
 $hex-999: #999999;
-$hex-eee: #eeeeee;
-$hex-ddd: #dddddd;
 $hex-ccc: #cccccc;
-$f0: #f0f0f0;
-$f5: #f5f5f5;
-$f7: #f7f7f7;
+$hex-ddd: #dddddd;
+$hex-eee: #eeeeee;
+$hex-f0: #f0f0f0;
+$hex-f5: #f5f5f5;
+$hex-f7: #f7f7f7;
 
 // ================== 主题变量 ==================
-:root {
-  // blue
-  --blue-100: #e6f0ff;
-  --blue-200: #b3d1ff;
-  --blue-300: #80b3ff;
-  --blue-400: #4d94ff;
-  --blue-500: #1073f5;
-  --blue-600: #0066ff;
-  --blue-700: #0052cc;
-  --blue-800: #003d99;
-  --blue-900: #002966;
+// blue
+$blue-100: #e6f0ff;
+$blue-200: #b3d1ff;
+$blue-300: #80b3ff;
+$blue-400: #4d94ff;
+$blue-500: #1073f5;
+$blue-600: #0066ff;
+$blue-700: #0052cc;
+$blue-800: #003d99;
+$blue-900: #002966;
 
-  // green
-  --green-100: #e6f7e6;
-  --green-200: #b3e6b3;
-  --green-300: #80d580;
-  --green-400: #4dc44d;
-  --green-500: #28a745;
-  --green-600: #208637;
-  --green-700: #19662a;
-  --green-800: #13471d;
-  --green-900: #0c2711;
+// green
+$green-100: #e6f7e6;
+$green-200: #b3e6b3;
+$green-300: #80d580;
+$green-400: #4dc44d;
+$green-500: #28a745;
+$green-600: #208637;
+$green-700: #19662a;
+$green-800: #13471d;
+$green-900: #0c2711;
 
-  // purple
-  --purple-100: #f2e6ff;
-  --purple-200: #d9b3ff;
-  --purple-300: #c080ff;
-  --purple-400: #a64dff;
-  --purple-500: #8c1aff;
-  --purple-600: #7000e6;
-  --purple-700: #5900b3;
-  --purple-800: #420080;
-  --purple-900: #2b004d;
+// purple
+$purple-100: #f2e6ff;
+$purple-200: #d9b3ff;
+$purple-300: #c080ff;
+$purple-400: #a64dff;
+$purple-500: #8c1aff;
+$purple-600: #7000e6;
+$purple-700: #5900b3;
+$purple-800: #420080;
+$purple-900: #2b004d;
 
-  // orange
-  --orange-100: #fff2e6;
-  --orange-200: #ffd9b3;
-  --orange-300: #ffc080;
-  --orange-400: #ffa64d;
-  --orange-500: #ff8c1a;
-  --orange-600: #e67000;
-  --orange-700: #b35900;
-  --orange-800: #804000;
-  --orange-900: #4d2600;
-}
+// orange
+$orange-100: #fff2e6;
+$orange-200: #ffd9b3;
+$orange-300: #ffc080;
+$orange-400: #ffa64d;
+$orange-500: #ff8c1a;
+$orange-600: #e67000;
+$orange-700: #b35900;
+$orange-800: #804000;
+$orange-900: #4d2600;
+
+// red
+$red-100: #ffe6e6;
+$red-200: #ffb3b3;
+$red-300: #ff8080;
+$red-400: #ff4d4d;
+$red-500: #ff4d4f;
+$red-600: #f5222d;
+$red-700: #cf1322;
+$red-800: #a8071a;
+$red-900: #820014;
+
+// gold
+$gold-100: #fff8e6;
+$gold-200: #ffedb3;
+$gold-300: #ffe180;
+$gold-400: #ffd700;
+$gold-500: #daa520;
+$gold-600: #b8860b;
+$gold-700: #966800;
+$gold-800: #735000;
+$gold-900: #4d3500;
+
+// pink
+$pink-100: #ffe6f0;
+$pink-200: #ffb3d1;
+$pink-300: #ff80b3;
+$pink-400: #ff4d94;
+$pink-500: #ff69b4;
+$pink-600: #ff1493;
+$pink-700: #cc1077;
+$pink-800: #990c5a;
+$pink-900: #66083c;
+
+// cyan
+$cyan-100: #e6fcff;
+$cyan-200: #b3f5fc;
+$cyan-300: #80edf7;
+$cyan-400: #4de4f2;
+$cyan-500: #0dcaf0;
+$cyan-600: #0aa2c0;
+$cyan-700: #087990;
+$cyan-800: #055160;
+$cyan-900: #032830;
+
+// yellow
+$yellow-100: #fff9e6;
+$yellow-200: #ffefb3;
+$yellow-300: #ffe480;
+$yellow-400: #ffd94d;
+$yellow-500: #ffc107;
+$yellow-600: #cc9a06;
+$yellow-700: #997404;
+$yellow-800: #664d03;
+$yellow-900: #332701;
 
 // 默认主题（蓝色主题 + 橙色辅助色）
 // 推荐搭配：蓝色主题搭配橙色辅助色，体现专业与活力的平衡
 [data-theme="default"] {
-  --primary: var(--blue-500);
-  --primary-light: var(--blue-400);
-  --primary-dark: var(--blue-600);
-  --accent: var(--orange-500);
-  --accent-light: var(--orange-400);
-  --accent-dark: var(--orange-600);
-  --success: var(--green-500);
-  --warning: var(--orange-400);
-  --danger: var(--purple-500);
-  --link: var(--blue-700);
+  --primary: #{$blue-500};
+  --primary-light: #{$blue-400};
+  --primary-dark: #{$blue-600};
+  --accent: #{$orange-500};
+  --accent-light: #{$orange-400};
+  --accent-dark: #{$orange-600};
+  --success: #{$green-500};
+  --warning: #{$orange-400};
+  --danger: #{$purple-500};
+  --link: #{$blue-700};
   
   // 浅色主题基础样式
   --background: #{$white};
@@ -103,16 +156,16 @@ $f7: #f7f7f7;
 
 // 浅色主题
 [data-theme="light"] {
-  --primary: var(--blue-500);
-  --primary-light: var(--blue-400);
-  --primary-dark: var(--blue-600);
-  --accent: var(--orange-500);
-  --accent-light: var(--orange-400);
-  --accent-dark: var(--orange-600);
-  --success: var(--green-500);
-  --warning: var(--orange-400);
-  --danger: var(--purple-500);
-  --link: var(--blue-700);
+  --primary: #{$blue-500};
+  --primary-light: #{$blue-400};
+  --primary-dark: #{$blue-600};
+  --accent: #{$orange-500};
+  --accent-light: #{$orange-400};
+  --accent-dark: #{$orange-600};
+  --success: #{$green-500};
+  --warning: #{$orange-400};
+  --danger: #{$purple-500};
+  --link: #{$blue-700};
   
   // 浅色主题基础样式
   --background: #{$white};
@@ -139,81 +192,81 @@ $f7: #f7f7f7;
 // 绿色主题
 // 推荐搭配：绿色主题搭配橙色辅助色，展现活力与健康的融合
 [data-theme="green"] {
-  --primary: var(--green-500);
-  --primary-light: var(--green-400);
-  --primary-dark: var(--green-600);
+  --primary: #{$green-500};
+  --primary-light: #{$green-400};
+  --primary-dark: #{$green-600};
 }
 
 // 紫色主题
-// 推荐搭配：紫色主题搭配橙色辅助色，展现优雅与浪漫氛围
+// 推荐搭配：紫色主题搭配金色辅助色，体现高贵与奢华的结合
 [data-theme="purple"] {
-  --primary: var(--purple-500);
-  --primary-light: var(--purple-400);
-  --primary-dark: var(--purple-600);
+  --primary: #{$purple-500};
+  --primary-light: #{$purple-400};
+  --primary-dark: #{$purple-600};
 }
 
 // 红色主题
-// 推荐搭配：红色主题搭配金色辅助色，突出促销氛围和高级感
+// 推荐搭配：红色主题搭配金色辅助色，展现热情与尊贵的平衡
 [data-theme="red"] {
-  --primary: #ff4d4f;
-  --primary-light: #ff7875;
-  --primary-dark: #f5222d;
-  --accent: #ffd700;
-  --accent-light: #ffe44d;
-  --accent-dark: #d4af37;
+  --primary: #{$red-500};
+  --primary-light: #{$red-400};
+  --primary-dark: #{$red-600};
+  --accent: #{$gold-400};
+  --accent-light: #{$gold-300};
+  --accent-dark: #{$gold-500};
 }
 
 // 橙色主题
-// 推荐搭配：橙色主题搭配蓝色辅助色，体现活力与稳重的结合
+// 推荐搭配：橙色主题搭配蓝色辅助色，体现活力与沉稳的结合
 [data-theme="orange"] {
-  --primary: #ff6b00;
-  --primary-light: #ff8533;
-  --primary-dark: #cc5500;
-  --accent: #4169e1;
-  --accent-light: #6495ed;
-  --accent-dark: #0000cd;
+  --primary: #{$orange-600};
+  --primary-light: #{$orange-500};
+  --primary-dark: #{$orange-700};
+  --accent: #{$blue-600};
+  --accent-light: #{$blue-500};
+  --accent-dark: #{$blue-700};
 }
 
 // 金色主题
-// 推荐搭配：金色主题搭配紫色辅助色，营造奢华高贵的视觉效果
+// 推荐搭配：金色主题搭配紫色辅助色，展现尊贵与神秘的结合
 [data-theme="gold"] {
-  --primary: #daa520;
-  --primary-light: #ffd700;
-  --primary-dark: #b8860b;
-  --accent: #800080;
-  --accent-light: #ba55d3;
-  --accent-dark: #4b0082;
+  --primary: #{$gold-500};
+  --primary-light: #{$gold-400};
+  --primary-dark: #{$gold-600};
+  --accent: #{$purple-500};
+  --accent-light: #{$purple-400};
+  --accent-dark: #{$purple-600};
 }
 
 // 粉色主题
-// 推荐搭配：粉色主题搭配紫色辅助色，打造时尚柔美的氛围
+// 推荐搭配：粉色主题搭配紫色辅助色，体现温柔与梦幻的结合
 [data-theme="pink"] {
-  --primary: #ff69b4;
-  --primary-light: #ff8dc7;
-  --primary-dark: #ff1493;
-  --accent: #9370db;
-  --accent-light: #ab82ff;
-  --accent-dark: #8a2be2;
+  --primary: #{$pink-500};
+  --primary-light: #{$pink-400};
+  --primary-dark: #{$pink-600};
+  --accent: #{$purple-400};
+  --accent-light: #{$purple-300};
+  --accent-dark: #{$purple-500};
 }
 
 // 青色主题
-// 推荐搭配：青色主题搭配深蓝色辅助色，体现科技感与专业性
+// 推荐搭配：青色主题搭配粉色辅助色，展现清新与活力的结合
 [data-theme="cyan"] {
-  --primary: #0dcaf0;
-  --primary-light: #3dd5f3;
-  --primary-dark: #0aa2c0;
-  --accent: var(--blue-700);
-  --accent-light: var(--blue-600);
-  --accent-dark: var(--blue-800);
+  --primary: #{$cyan-500};
+  --primary-light: #{$cyan-400};
+  --primary-dark: #{$cyan-600};
+  --accent: #{$pink-400};
+  --accent-light: #{$pink-300};
+  --accent-dark: #{$pink-500};
 }
 
 // 黄色主题
-// 推荐搭配：黄色主题搭配橙色辅助色，营造温暖活泼氛围
+// 推荐搭配：黄色主题搭配蓝色辅助色，体现明快与稳重的结合
 [data-theme="yellow"] {
-  --primary: #ffc107;
-  --primary-light: #ffcd39;
-  --primary-dark: #cc9a06;
-  --accent: var(--orange-500);
-  --accent-light: var(--orange-400);
-  --accent-dark: var(--orange-600);
+  --primary: #{$yellow-500};
+  --primary-light: #{$yellow-400};
+  --primary-dark: #{$yellow-600};
+  --accent: #{$blue-500};
+  --accent-light: #{$blue-400};
+  --accent-dark: #{$blue-600};
 }

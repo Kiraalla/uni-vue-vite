@@ -98,9 +98,14 @@ $spacing-base: 2 !default; // 基础间距数值
   display: none;
 }
 
+.ovh {
+  overflow: hidden;
+}
+
 .visible {
   overflow: visible;
 }
+
 
 // ================== 布局系统 ==================
 // Flexbox布局
@@ -160,6 +165,7 @@ $justify-values: map.merge($alignment-values, (between: space-between,
     transform: translate(-50%, -50%);
   }
 }
+
 // z-index 系统
 @for $i from -5 through 5 {
   $num: if($i < 0, 'n' + abs($i * $spacing-base), $i * $spacing-base);
@@ -177,6 +183,7 @@ $justify-values: map.merge($alignment-values, (between: space-between,
     z-index: #{$i * $spacing-base};
   }
 }
+
 // ================== 视觉效果 ==================
 // 颜色系统
 $mapColor: (
@@ -202,9 +209,9 @@ $mapColor: (
   999: $hex-999,
   eee: $hex-eee,
   ddd: $hex-ddd,
-  f0: $f0,
-  f5: $f5,
-  f7: $f7,
+  f0: $hex-f0,
+  f5: $hex-f5,
+  f7: $hex-f7,
   black-20: $black-20,
   black-40: $black-40,
   black-60: $black-60,
@@ -228,12 +235,30 @@ $mapColor: (
     text-align: right;
   }
 
-  &-ellipsis {
+  &-elide {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+
+    &-2 {
+      display: -webkit-box;
+      line-clamp: 2;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      white-space: normal;
+    }
+    &-3 {
+      display: -webkit-box;
+      line-clamp: 3;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      white-space: normal;
+    }
   }
 }
+
 @include generate-utility('color', $mapColor, 'text-');
 @include generate-utility('background-color', $mapColor, 'bg-');
 
@@ -273,9 +298,9 @@ $shadows: (
 
 // 圆角系统
 $border-radius: (
-  'sm': 2,
-  'default': 4,
-  'lg': 8,
+  'sm': 4,
+  'default': 8,
+  'lg': 16,
   'full': 999
 );
 
@@ -284,6 +309,63 @@ $border-radius: (
 
   .rounded#{$class-name} {
     border-radius: #{get-size($value)};
+  }
+}
+
+// 边框系统
+$border-styles: (
+  'solid': solid,
+  'dashed': dashed,
+  'dotted': dotted,
+  'none': none
+);
+
+// 基础边框类
+.border {
+  border-style: solid;
+  border-width: get-size(1);
+  border-color: var(--border);
+
+  // 边框宽度
+  @for $i from 1 through 3 {
+    &-#{$i} {
+      border-width: get-size($i);
+    }
+  }
+
+  // 边框样式
+  @each $style, $value in $border-styles {
+    &-#{$style} {
+      border-style: $value;
+    }
+  }
+
+  // 边框颜色
+  @each $color, $value in $mapColor {
+    @if $color !='border' {
+      &-#{''+$color} {
+        border-color: $value;
+      }
+    }
+  }
+
+  // 边框方向
+  @each $dir, $prop in (t: top, r: right, b: bottom, l: left) {
+    &-#{$dir} {
+      border: none;
+      border-#{$prop}: get-size(1) solid var(--border);
+    }
+
+    // 方向边框宽度
+    @for $i from 1 through 5 {
+      &-#{$dir}-#{$i} {
+        border-#{$prop}-width: get-size($i);
+      }
+    }
+  }
+
+  &-none {
+    border: none;
   }
 }
 
@@ -296,7 +378,7 @@ $border-radius: (
 
 // ================== 尺寸和间距系统 ==================
 // 字体大小系统
-@for $i from 6 through 24 {
+@for $i from 5 through 24 {
   $value: $i * 2;
 
   .font-#{$value} {
