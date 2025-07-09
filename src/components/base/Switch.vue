@@ -24,7 +24,7 @@
 </template>
 
 <script setup>
-import { defineProps, defineEmits } from 'vue'
+import { defineEmits, defineProps } from 'vue';
 
 const props = defineProps({
   modelValue: {
@@ -74,6 +74,25 @@ const handleClick = () => {
   align-items: center;
   position: relative;
   cursor: pointer;
+
+  &--disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+
+    .base-switch__core {
+      cursor: not-allowed;
+    }
+  }
+
+  &--checked {
+    .base-switch__core {
+      background-color: var(--color);
+    }
+
+    .base-switch__button {
+      transform: translateX(20px);
+    }
+  }
   
   &__core {
     display: inline-block;

@@ -13,15 +13,22 @@
       }
     },
     {
-      "path": "pages/demo/index",
-      "style": {
-        "navigationBarTitleText": "组件测试"
-      }
-    },
-    {
       "path": "pages/demo/http-test",
       "style": {
         "navigationBarTitleText": "HTTP工具测试"
+      }
+    },
+    {
+      "path": "pages/components/index",
+      "style": {
+        "navigationBarTitleText": "组件展示"
+      }
+    },
+    {
+      "path": "pages/components/detail",
+      "style": {
+        "navigationBarTitleText": "组件详情",
+        "navigationStyle": "custom"
       }
     }
   ],

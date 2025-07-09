@@ -701,3 +701,23 @@
 .h-90px{ height:180rpx }
 .w-100px{ width:200rpx }
 .h-100px{ height:200rpx }
+page{ min-height:100vh; background-color:#f8f8f8; font-size:28rpx; line-height:1.5; color:#333; box-sizing:border-box }
+view{ box-sizing:border-box; position:relative }
+text{ display:inline-block; box-sizing:border-box }
+image{ width:100%; height:auto; display:block; box-sizing:border-box }
+button{ margin:0; padding:0; border:none; outline:none; background:none; box-sizing:border-box }
+button::after{ border:none }
+input{ outline:none; border:none; margin:0; padding:0; box-sizing:border-box }
+checkbox,radio{ margin:0 }
+checkbox .wx-checkbox-input,checkbox .wx-radio-input,radio .wx-checkbox-input,radio .wx-radio-input{ margin:0; width:36rpx; height:36rpx }
+checkbox .wx-checkbox-input.wx-checkbox-input-checked,checkbox .wx-checkbox-input.wx-radio-input-checked,checkbox .wx-radio-input.wx-checkbox-input-checked,checkbox .wx-radio-input.wx-radio-input-checked,radio .wx-checkbox-input.wx-checkbox-input-checked,radio .wx-checkbox-input.wx-radio-input-checked,radio .wx-radio-input.wx-checkbox-input-checked,radio .wx-radio-input.wx-radio-input-checked{ border-color:#07c160; background-color:#07c160 }
+picker{ width:100% }
+textarea{ width:100%; outline:none; border:none; resize:none; box-sizing:border-box }
+scroll-view{ width:100%; height:100%; box-sizing:border-box }
+video,audio{ width:100%; display:block }
+swiper{ width:100%; height:auto }
+swiper swiper-item{ width:100%; height:100%; box-sizing:border-box }
+.navigator-hover{ background-color:rgba(0,0,0,0); opacity:.7 }
+.button-hover,.view-hover{ opacity:.9 }
+page,view,text,scroll-view,swiper,swiper-item{ -webkit-user-select:none; user-select:none }
+::-webkit-scrollbar{ display:none; width:0; height:0; color:rgba(0,0,0,0) }

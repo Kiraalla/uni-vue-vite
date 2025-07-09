@@ -5,18 +5,27 @@
       `base-radio--${size}`,
       {
         'base-radio--disabled': disabled,
-        'base-radio--checked': modelValue === label
+        'base-radio--checked': modelValue === label,
+        'base-radio--focus': isFocused
       }
     ]"
+    :style="{ '--color': color }"
+    @keydown.space.prevent="handleKeydown"
+    tabindex="0"
+    role="radio"
+    :aria-checked="modelValue === label"
+    :aria-disabled="disabled"
   >
     <span class="base-radio__input">
       <input
         type="radio"
         :value="label"
-        :name="name"
+        :name="radioGroup?.name || name"
         :disabled="disabled"
-        v-model="modelValue"
+        @input="handleChange"
         @change="handleChange"
+        @focus="isFocused = true"
+        @blur="isFocused = false"
       >
       <span class="base-radio__inner"></span>
     </span>
@@ -27,7 +36,9 @@
 </template>
 
 <script setup>
-import { defineProps, defineEmits } from 'vue'
+import { defineEmits, defineProps, inject, ref } from 'vue';
+
+const radioGroup = inject('radioGroup', null);
 
 const props = defineProps({
   modelValue: {
@@ -59,9 +70,26 @@ const props = defineProps({
 
 const emit = defineEmits(['update:modelValue', 'change'])
 
+const isFocused = ref(false)
+
 const handleChange = (event) => {
-  emit('update:modelValue', event.target.value)
-  emit('change', event.target.value)
+  if (radioGroup) {
+    radioGroup.onChange(event.target.value);
+  } else {
+    emit('update:modelValue', event.target.value);
+    emit('change', event.target.value);
+  }
+}
+
+const handleKeydown = () => {
+  if (!props.disabled) {
+    if (radioGroup) {
+      radioGroup.onChange(props.label);
+    } else {
+      emit('update:modelValue', props.label);
+      emit('change', props.label);
+    }
+  }
 }
 </script>
 
@@ -72,6 +100,35 @@ const handleChange = (event) => {
   position: relative;
   cursor: pointer;
   margin-right: 30px;
+  outline: none;
+  transition: all 0.3s;
+
+  &--disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+
+    .base-radio__input {
+      cursor: not-allowed;
+    }
+  }
+
+  &--checked {
+    .base-radio__inner {
+      border-color: var(--color);
+      background-color: var(--color);
+
+      &::after {
+        transform: translate(-50%, -50%) scale(1);
+        background-color: #fff;
+      }
+    }
+  }
+
+  &--focus {
+    .base-radio__inner {
+      box-shadow: 0 0 2px 2px rgba(64, 158, 255, 0.2);
+    }
+  }
   
   &__input {
     white-space: nowrap;
@@ -92,19 +149,23 @@ const handleChange = (event) => {
     display: inline-block;
     position: relative;
     border: 1px solid #dcdfe6;
-    border-radius: 100%;
-    box-sizing: border-box;
     width: 14px;
     height: 14px;
+    border-radius: 50%;
     background-color: #fff;
-    transition: border-color 0.25s;
+    transition: all 0.3s;
+    box-sizing: border-box;
 
-    &:after {
+    &:hover {
+      border-color: var(--color, #409eff);
+    }
+
+    &::after {
       content: "";
       position: absolute;
       width: 4px;
       height: 4px;
-      border-radius: 100%;
+      border-radius: 50%;
       background-color: #fff;
       left: 50%;
       top: 50%;
@@ -124,13 +185,19 @@ const handleChange = (event) => {
       border-color: var(--color, #409eff);
       background: var(--color, #409eff);
 
-      &:after {
+      &::after {
         transform: translate(-50%, -50%) scale(1);
       }
     }
 
     .base-radio__label {
       color: var(--color, #409eff);
+    }
+  }
+
+  &--focus:not(&--disabled) {
+    .base-radio__inner {
+      box-shadow: 0 0 0 2px rgba(var(--color, #409eff), 0.2);
     }
   }
 

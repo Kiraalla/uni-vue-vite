@@ -13,8 +13,8 @@
   </view>
 </template>
 <script setup>
-import CallService from "@/components/CallService";
-import UserAvatar from "@/components/UserAvatar";
+import CallService from "@/components/business/CallService";
+import UserAvatar from "@/components/business/UserAvatar";
 import { ref } from "vue";
 // 其他逻辑
 const list = ref(
@@ -29,7 +29,7 @@ const list = ref(
 );
 const goDemo = () => {
   uni.navigateTo({
-    url: "/pages/demo/index",
+    url: "/pages/components/index",
   });
 };
 </script>

@@ -38,8 +38,8 @@ const props = defineProps({
 // 处理 block
 const inlineBlock = computed(() => (props.block ? "block" : "inline-block"));
 const initialLetter = computed(() => {
-  const name = props.name || "";
-  const firstLetter = name.charAt(0);
+  const name = props.name || '';
+  const firstLetter = name ? name.charAt(0) : '';
   return firstLetter ? firstLetter.toUpperCase() : "";
 });
 

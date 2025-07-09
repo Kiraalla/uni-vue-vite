@@ -1,27 +1,15 @@
 <template>
   <transition name="base-dialog-fade">
-    <div
-      v-show="modelValue"
-      class="base-dialog__wrapper"
-      @click.self="handleWrapperClick"
-    >
-      <div
-        class="base-dialog"
-        :class="[
-          `base-dialog--${size}`,
-          { 'base-dialog--center': center }
-        ]"
-        :style="{ width: width }"
-      >
+    <div v-show="modelValue" class="base-dialog__wrapper" @click.self="handleWrapperClick">
+      <div class="base-dialog" :class="[
+      `base-dialog--${size}`,
+      { 'base-dialog--center': center }
+    ]" :style="{ width: width }">
         <div class="base-dialog__header">
           <slot name="title">
             <span class="base-dialog__title">{{ title }}</span>
           </slot>
-          <button
-            v-if="showClose"
-            class="base-dialog__close"
-            @click="handleClose"
-          >×</button>
+          <button v-if="showClose" class="base-dialog__close" @click="handleClose">×</button>
         </div>
         <div class="base-dialog__body">
           <slot></slot>
@@ -35,7 +23,7 @@
 </template>
 
 <script setup>
-import { defineProps, defineEmits } from 'vue'
+import { defineEmits, defineProps } from 'vue';
 
 const props = defineProps({
   modelValue: {
@@ -85,6 +73,13 @@ const handleWrapperClick = () => {
 
 <style lang="scss" scoped>
 .base-dialog {
+  position: relative;
+  margin: 15vh auto 50px;
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
+
   &__wrapper {
     position: fixed;
     top: 0;
@@ -96,13 +91,6 @@ const handleWrapperClick = () => {
     z-index: 2000;
     background-color: rgba(0, 0, 0, 0.5);
   }
-
-  position: relative;
-  margin: 15vh auto 50px;
-  background: #fff;
-  border-radius: 4px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-  box-sizing: border-box;
 
   &--large {
     max-width: 800px;

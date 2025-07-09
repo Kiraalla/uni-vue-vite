@@ -35,7 +35,7 @@
 </template>
 
 <script setup>
-import { defineProps } from 'vue'
+import { defineProps } from 'vue';
 
 const props = defineProps({
   percentage: {
@@ -94,7 +94,7 @@ const props = defineProps({
     position: relative;
     height: 100%;
     text-align: right;
-    background-color: #409eff;
+    background-color: var(--color);
     border-radius: 100px;
     transition: width 0.6s ease;
   }
@@ -103,7 +103,7 @@ const props = defineProps({
     margin-left: 8px;
     min-width: 50px;
     font-size: 14px;
-    color: #606266;
+    color: var(--text-color);
   }
   
   &__stripe {

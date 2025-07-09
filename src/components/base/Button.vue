@@ -20,7 +20,7 @@
 </template>
 
 <script setup>
-import { defineProps, defineEmits } from 'vue'
+import { defineEmits, defineProps } from 'vue';
 
 const props = defineProps({
   type: {
@@ -82,6 +82,7 @@ const handleClick = (event) => {
   line-height: 1;
   white-space: nowrap;
   cursor: pointer;
+  appearance: none;
   -webkit-appearance: none;
   text-align: center;
   box-sizing: border-box;
@@ -93,6 +94,30 @@ const handleClick = (event) => {
   position: relative;
   border: 1px solid transparent;
   border-radius: 4px;
+
+  &--disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  &__loading {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin-right: 8px;
+    border: 2px solid currentColor;
+    border-radius: 50%;
+    border-right-color: transparent;
+    animation: button-loading 1s infinite linear;
+  }
+
+  @keyframes button-loading {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
 
   &--large {
     padding: 12px 20px;
